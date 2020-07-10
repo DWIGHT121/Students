@@ -1,5 +1,9 @@
 from django import forms
+from .models import Info
+from django.forms import ModelForm
 
 
-class NameForm(forms.Form):
-    your_name = forms.CharField(label='Your name', max_length=100)
+class InfoForm(ModelForm):
+    class Meta:
+        model = Info
+        fields = '__all__'

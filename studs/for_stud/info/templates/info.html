@@ -1,9 +1,15 @@
 {% extends 'index.html'%}
 
 {% block title%}
-<h1>Registration Page</h1>
+Registration
 {% endblock%}
 
 {% block body%}
+<h1>Registration page</h1>
+<form action="/info" class="as_p" method="POST">
+    {% csrf_token %}
+    {{ data.as_p }}
+    <input type="submit" name="" id="" value="Sign up!">
 
+</form>
 {% endblock %}
