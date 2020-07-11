@@ -6,4 +6,7 @@ This is thee main page
 
 {% block body%}
 <h1>This is now the main page, okay?</h1>
+{% if name %}
+<h2>{{name}}</h2>
+{% endif%}
 {% endblock %}
