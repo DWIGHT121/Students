@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import InfoForm
+from .forms import InfoForm, LoginForm
 from .models import Info
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -24,13 +24,7 @@ def info(request):
 
 def login(request):
     if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        username_data = Info.objects.get(
-            username='username').first()
-        if username_data:
-            if password == Info.objects.get(username="username").first().password:
-                name = username_data.name
-                return redirect('/', name='name')
-
-    return render(request, "login.html")
+        user_info = LoginForm(request.POST)
+        return render(request, "after_info.html", {"username": user_info})
+    else:
+        return render(request, "login.html", {})
